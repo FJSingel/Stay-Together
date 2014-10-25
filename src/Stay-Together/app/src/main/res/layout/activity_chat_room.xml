@@ -12,8 +12,10 @@
         android:layout_width="fill_parent"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/listFooter"
-        android:transcriptMode="alwaysScroll">
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true">
         </ListView>
+
 
     <LinearLayout android:id="@+id/listFooter"
         android:layout_width="fill_parent"

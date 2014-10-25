@@ -1,4 +1,4 @@
-package backend.room;
+package com.reduber.backend.room;
 
 import java.util.HashMap;
 import java.util.Map;

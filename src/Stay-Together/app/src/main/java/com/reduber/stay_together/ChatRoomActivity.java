@@ -12,13 +12,12 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.reduber.backend.base.Base;
 
 import java.util.Random;
 
 public class ChatRoomActivity extends ListActivity {
 
-
-    private static final String FIREBASE_URL = "staytogether.firebaseIO.com";
 
     private String username;
     private Firebase ref;
@@ -36,7 +35,7 @@ public class ChatRoomActivity extends ListActivity {
         setTitle("Chatting as " + username);
 
         // Setup our Firebase ref
-        ref = Basenew Firebase(FIREBASE_URL).child("chat");
+        ref = Base.chat();
 
         // Setup our input methods. Enter key on the keyboard or pushing the send button
         EditText inputText = (EditText)findViewById(R.id.messageInput);

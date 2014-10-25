@@ -1,4 +1,4 @@
-package backend.base;
+package com.reduber.backend.base;
 
 public abstract class Monitor {
 
