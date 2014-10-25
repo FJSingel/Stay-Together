@@ -4,5 +4,8 @@
     <string name="app_name">Stay-Together</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_lobby">lobbyActivity</string>
+    <string name="title_activity_create_room">createRoomActivity</string>
+    <string name="title_activity_room_list">roomListActivity</string>
 
 </resources>

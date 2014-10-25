@@ -1,41 +1,24 @@
 package com.reduber.stay_together;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-
-import com.firebase.client.AuthData;
-import com.firebase.client.Firebase;
 
 
-public class MainActivity extends Activity {
+public class RoomListActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Firebase.setAndroidContext(this);
-        Firebase ref = new Firebase("https://staytogether.firebaseio.com");
-        ref.addAuthStateListener(new Firebase.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(AuthData authData) {
-                if (authData != null) {
-                    // user is logged in
-                } else {
-                    // user is not logged in
-                }
-            }
-        });
+        setContentView(R.layout.activity_room_list);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.room_list, menu);
         return true;
     }
 
@@ -49,10 +32,5 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void toLobby(View view) {
-        Intent intent = new Intent(this, LobbyActivity.class);
-        startActivity(intent);
     }
 }

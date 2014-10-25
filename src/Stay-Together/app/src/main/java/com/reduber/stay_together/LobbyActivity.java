@@ -7,35 +7,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.firebase.client.AuthData;
-import com.firebase.client.Firebase;
 
-
-public class MainActivity extends Activity {
+public class LobbyActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Firebase.setAndroidContext(this);
-        Firebase ref = new Firebase("https://staytogether.firebaseio.com");
-        ref.addAuthStateListener(new Firebase.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(AuthData authData) {
-                if (authData != null) {
-                    // user is logged in
-                } else {
-                    // user is not logged in
-                }
-            }
-        });
+        setContentView(R.layout.activity_lobby);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.lobby, menu);
         return true;
     }
 
@@ -51,8 +36,14 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void toLobby(View view) {
-        Intent intent = new Intent(this, LobbyActivity.class);
+    public void toRoomList(View view) {
+        Intent intent = new Intent(this, RoomListActivity.class);
         startActivity(intent);
     }
+
+    public void toCreateRoom(View view) {
+        Intent intent = new Intent(this, CreateRoomActivity.class);
+        startActivity(intent);
+    }
+
 }
