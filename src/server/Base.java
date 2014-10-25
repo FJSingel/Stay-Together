@@ -5,14 +5,30 @@ import com.firebase.client.Firebase;
 public class Base {
 
 	private final static String url = "https://staytogether.firebaseio.com/";
-	public final static Firebase root  = new Firebase(url);
-	public final static Firebase user  = root.child("user");
-	public final static Firebase room  = root.child("room");
+	private static Firebase root; 
+	private static Firebase user;
+	private static Firebase room;
 	
+	public static Firebase root(){
+		if (root == null)
+			root = new Firebase(url);
+		return user;
+	}
+	
+	public static Firebase user(){
+		if (user == null)
+			user = root().child("user");
+		return user;
+	}
+	
+	public static Firebase room(){
+		if (room == null)
+			room = root().child("user");
+		return user;
+	}
 	
 	public static void main(String[] args) {
-		room.setValue("VALUE");
-		System.out.println("done");
+		System.out.println("");
 	}
 	
 }
