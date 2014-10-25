@@ -1,4 +1,4 @@
-package test;
+package backend.test;
 
 import java.awt.Dimension;
 

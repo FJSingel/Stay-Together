@@ -1,4 +1,4 @@
-package test;
+package backend.test;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,10 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import server.CompletionListener;
-import user.User;
-import user.UserData;
-import user.UserPData;
+import backend.base.CompletionListener;
+import backend.user.User;
+import backend.user.UserData;
+import backend.user.UserPData;
+
 
 public class UserPanel extends TPanel {
 

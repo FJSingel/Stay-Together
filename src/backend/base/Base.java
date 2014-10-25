@@ -1,6 +1,7 @@
-package server;
+package backend.base;
 
-import test.TestWindow;
+
+import backend.test.TestWindow;
 
 import com.firebase.client.Firebase;
 

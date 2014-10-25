@@ -1,4 +1,4 @@
-package test;
+package backend.test;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,10 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import room.Room;
-import room.RoomData;
-import room.RoomPData;
-import server.CompletionListener;
+import backend.base.CompletionListener;
+import backend.room.Room;
+import backend.room.RoomData;
+import backend.room.RoomPData;
+
 
 public class RoomPanel extends TPanel {
 

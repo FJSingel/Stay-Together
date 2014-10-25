@@ -1,31 +1,32 @@
-package room;
+package backend.user;
 
-import server.Base;
-import server.CompletionListener;
-import server.Monitor;
-import server.Util;
+
+import backend.base.Base;
+import backend.base.CompletionListener;
+import backend.base.Monitor;
+import backend.base.Util;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-public class Room {
+public class User {
 
-	private String roomid;
-	private RoomData data = RoomData.invalid;
-	private RoomPData pdata;
+	private String username;
+	private UserData data = UserData.invalid;
+	private UserPData pdata;
 
-	public Room(String roomid) {
-		this.roomid = roomid;
+	public User(String username) {
+		this.username = username;
 	}
 
-	public void getRoomDataNonBlocking(final CompletionListener listener) {
-		data = RoomData.invalid;
-		Base.room(roomid).child("data")
+	public void getUserDataNonBlocking(final CompletionListener listener) {
+		data = UserData.invalid;
+		Base.user(username).child("data")
 				.addListenerForSingleValueEvent(new ValueEventListener() {
 					@Override
 					public void onDataChange(DataSnapshot snapshot) {
-						data = RoomData.deserialize(snapshot.getValue());
+						data = UserData.deserialize(snapshot.getValue());
 						if (listener != null)
 							listener.completed(data);
 					}
@@ -39,27 +40,27 @@ public class Room {
 				});
 	}
 
-	public RoomData getRoomDataBlocking() throws InterruptedException {
-		getRoomDataNonBlocking(null);
+	public UserData getUserDataBlocking() throws InterruptedException {
+		getUserDataNonBlocking(null);
 		Monitor dataMonitor = new Monitor() {
 			@Override
 			public Object target() {
 				return data;
 			}
 		};
-		Util.block(dataMonitor, RoomData.invalid, 10 * Util.s);
+		Util.block(dataMonitor, UserData.invalid, 10 * Util.s);
 		return data;
 	}
 
-	public void getRoomPDataNonBlocking(final CompletionListener listener) {
+	public void getUserPDataNonBlocking(final CompletionListener listener) {
 		/* TODO Authorization check */
 
-		pdata = RoomPData.invalid;
-		Base.room(roomid).child("pdata")
+		pdata = UserPData.invalid;
+		Base.user(username).child("pdata")
 				.addListenerForSingleValueEvent(new ValueEventListener() {
 					@Override
 					public void onDataChange(DataSnapshot snapshot) {
-						pdata = RoomPData.deserialize(snapshot.getValue());
+						pdata = UserPData.deserialize(snapshot.getValue());
 						if (listener != null)
 							listener.completed(pdata);
 					}
@@ -73,15 +74,16 @@ public class Room {
 				});
 	}
 
-	public RoomPData getRoomPDataBlocking() throws InterruptedException {
-		getRoomPDataNonBlocking(null);
+	public UserPData getUserPDataBlocking() throws InterruptedException {
+		getUserPDataNonBlocking(null);
 		Monitor pdataMonitor = new Monitor() {
 			@Override
 			public Object target() {
 				return pdata;
 			}
 		};
-		Util.block(pdataMonitor, RoomPData.invalid, 10 * Util.s);
+		Util.block(pdataMonitor, UserPData.invalid, 10 * Util.s);
 		return pdata;
 	}
+
 }

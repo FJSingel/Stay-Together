@@ -1,4 +1,4 @@
-package room;
+package backend.room;
 
 import java.util.HashMap;
 import java.util.Map;
