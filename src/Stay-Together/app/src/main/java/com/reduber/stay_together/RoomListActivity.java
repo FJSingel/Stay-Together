@@ -1,9 +1,11 @@
 package com.reduber.stay_together;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class RoomListActivity extends Activity {
@@ -32,5 +34,10 @@ public class RoomListActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void toChatRoom(View view) {
+        Intent intent = new Intent(this, ChatRoomActivity.class);
+        startActivity(intent);
     }
 }

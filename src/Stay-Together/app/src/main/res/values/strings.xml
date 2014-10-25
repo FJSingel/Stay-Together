@@ -7,5 +7,7 @@
     <string name="title_activity_lobby">lobbyActivity</string>
     <string name="title_activity_create_room">createRoomActivity</string>
     <string name="title_activity_room_list">roomListActivity</string>
+    <string name="title_activity_chat_room">ChatRoomActivity</string>
+    <string name="title_activity_message">MessageActivity</string>
 
 </resources>
