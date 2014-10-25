@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.firebase.client.AuthData;
+import com.example.stay_together.R;
 import com.firebase.client.Firebase;
 
 
@@ -16,17 +16,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
-        Firebase ref = new Firebase("https://staytogether.firebaseio.com");
-        ref.addAuthStateListener(new Firebase.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(AuthData authData) {
-                if (authData != null) {
-                    // user is logged in
-                } else {
-                    // user is not logged in
-                }
-            }
-        });
     }
 
 
