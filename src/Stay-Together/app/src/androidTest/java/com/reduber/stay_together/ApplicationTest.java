@@ -9,5 +9,15 @@ import android.test.ApplicationTestCase;
 public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {
         super(Application.class);
+        
+
+    }       
+    
+    protected void setUp() throws Exception {
+        super.setUp();
+    }
+    
+    protected void testChatBox() throws Exception {
+    	
     }
 }
