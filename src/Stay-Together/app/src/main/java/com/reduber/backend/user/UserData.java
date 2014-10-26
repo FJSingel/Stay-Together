@@ -1,4 +1,4 @@
-package backend.user;
+package com.reduber.backend.user;
 
 import java.util.HashMap;
 import java.util.Map;
