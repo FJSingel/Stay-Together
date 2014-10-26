@@ -18,6 +18,7 @@ import com.facebook.widget.LoginButton;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.reduber.backend.base.Base;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +29,6 @@ public class MainActivity extends Activity {
     private TextView mLoggedInStatusTextView;
 
     private ProgressDialog mAuthProgressDialog;
-
-    private Firebase ref;
 
     private AuthData authData;
 
@@ -63,7 +62,6 @@ public class MainActivity extends Activity {
         mLoggedInStatusTextView = (TextView)findViewById(R.id.login_status);
 
         Firebase.setAndroidContext(getApplicationContext());
-        ref = Base.root();
 
         mAuthProgressDialog = new ProgressDialog(this);
         mAuthProgressDialog.setTitle("Loading");
@@ -72,8 +70,7 @@ public class MainActivity extends Activity {
         mAuthProgressDialog.show();
 
         Firebase.setAndroidContext(this);
-        Firebase ref = new Firebase("https://staytogether.firebaseio.com");
-        ref.addAuthStateListener(new Firebase.AuthStateListener() {
+        Base.root().addAuthStateListener(new Firebase.AuthStateListener() {
             @Override
             public void onAuthStateChanged(AuthData authData) {
                 mAuthProgressDialog.hide();
@@ -114,7 +111,7 @@ public class MainActivity extends Activity {
     private void logout() {
         if (this.authData != null) {
             /* logout of Firebase */
-            ref.unauth();
+            Base.root().unauth();
             /* Logout of any of the Frameworks. This step is optional, but ensures the user is not logged into
              * Facebook/Google+ after logging out of Firebase. */
             if (this.authData.getProvider().equals("facebook")) {
@@ -139,7 +136,7 @@ public class MainActivity extends Activity {
             showErrorDialog(options.get("error"));
         } else {
             mAuthProgressDialog.show();
-            ref.authWithOAuthToken(provider, options.get("oauth_token"), new AuthResultHandler(provider));
+            Base.root().authWithOAuthToken(provider, options.get("oauth_token"), new AuthResultHandler(provider));
         }
     }
 
@@ -206,11 +203,11 @@ public class MainActivity extends Activity {
     private void onFacebookSessionStateChange(Session session, SessionState state, Exception exception) {
         if (state.isOpened()) {
             mAuthProgressDialog.show();
-            ref.authWithOAuthToken("facebook", session.getAccessToken(), new AuthResultHandler("facebook"));
+            Base.root().authWithOAuthToken("facebook", session.getAccessToken(), new AuthResultHandler("facebook"));
         } else if (state.isClosed()) {
             /* Logged out of Facebook and currently authenticated with Firebase using Facebook, so do a logout */
             if (this.authData != null && this.authData.getProvider().equals("facebook")) {
-                ref.unauth();
+                Base.root().unauth();
                 setAuthenticatedUser(null);
             }
         }
@@ -218,7 +215,7 @@ public class MainActivity extends Activity {
 
     public void loginWithPassword() {
         mAuthProgressDialog.show();
-        ref.authWithPassword("test@firebaseuser.com", "test1234", new AuthResultHandler("password"));
+        Base.root().authWithPassword("test@firebaseuser.com", "test1234", new AuthResultHandler("password"));
     }
 
     /*public void toLobby(View view) {
