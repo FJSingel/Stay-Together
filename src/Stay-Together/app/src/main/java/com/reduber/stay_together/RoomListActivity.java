@@ -40,4 +40,10 @@ public class RoomListActivity extends Activity {
         Intent intent = new Intent(this, ChatRoomActivity.class);
         startActivity(intent);
     }
+
+
+    public void toMaps(View view) {
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
 }

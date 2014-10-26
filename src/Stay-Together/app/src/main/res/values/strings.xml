@@ -9,5 +9,6 @@
     <string name="title_activity_room_list">roomListActivity</string>
     <string name="title_activity_chat_room">ChatRoomActivity</string>
     <string name="title_activity_message">MessageActivity</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

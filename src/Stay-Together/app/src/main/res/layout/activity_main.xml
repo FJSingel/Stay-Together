@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.firebase.samples.logindemo.MainActivity">
+    tools:context="com.reduber.stay_together.MainActivity">
 
     <TextView
         android:id="@+id/login_status"
@@ -18,7 +18,7 @@
         android:layout_marginTop="20dp"
         />
 
-    <com.facebook.widget.LoginButton
+    <Button
         android:id="@+id/login_with_facebook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,5 +31,12 @@
         android:text="login with password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/toLobby"
+        android:text="Lobby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toLobby" />/>
 
 </LinearLayout>
